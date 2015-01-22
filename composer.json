@@ -8,13 +8,13 @@
 	"authors": [
 		{
 			"name": "Barta Tamás",
-			"homepage": "http://bartatamas.hu",
+			"homepage": "http://bartatamas.hu"
 		}
 	],
 	"require": {
 		"php": ">=5.4.0",
 		"codegyre/robo": "0.5.0",
-		"mishal/iless": "@development"
+		"mishal/iless": "~1.6"
 	},
 	"autoload": {
 		"psr-4": { "Robo\\": "src/" }
