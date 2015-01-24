@@ -8,7 +8,7 @@ namespace Robo\Task\ILess;
  * @package Robo\Iless
  * @author Tamás Barta <barta.tamas.d@gmail.com>
  */
-class CompileLessTask extends \Robo\Contract\TaskInterface
+class CompileLessTask implements \Robo\Contract\TaskInterface
 {
     /**
      * The associative array of paths to compile
@@ -20,7 +20,7 @@ class CompileLessTask extends \Robo\Contract\TaskInterface
      * The array of directories to use as import directories in ILess
      * @var array
      */
-    protected $importDirs;
+    protected $importDirs = [];
 
     public function __construct(array $paths)
     {
@@ -41,8 +41,8 @@ class CompileLessTask extends \Robo\Contract\TaskInterface
 
     public function run()
     {
-        $parser = new ILess_Parser([
-            'import_dirs' => $this->$importDirs,
+        $parser = new \ILess_Parser([
+            'import_dirs' => $this->importDirs,
         ]);
 
         foreach ($this->paths as $destination => $source) {
