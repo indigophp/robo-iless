@@ -11,7 +11,7 @@ namespace Robo\Task\ILess;
 class CompileLessTask implements \Robo\Contract\TaskInterface
 {
 
-    use Robo\Common\TaskIO;
+    use \Robo\Common\TaskIO;
 
     /**
      * The associative array of paths to compile
