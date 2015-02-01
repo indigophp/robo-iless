@@ -35,7 +35,20 @@ class CompileLessTaskTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($this->task, $this->task->paths([]));
         $this->assertSame($this->task, $this->task->addPaths([]));
         $this->assertSame($this->task, $this->task->importDirs([]));
-        $this->assertInstanceOf('\Robo\Result', $this->task->run());
+        $result = $this->task->run();
+        $this->assertInstanceOf('\Robo\Result', $result);
+        $this->assertTrue($result->wasSuccessful(), 'The task must be run successfully');
+    }
+
+    public function testFail()
+    {
+        $this->task->importDirs([]);
+        $this->task->paths([
+            'build' . DIRECTORY_SEPARATOR . 'nowhere.css' => 'build' . DIRECTORY_SEPARATOR . 'nowhere.less'
+        ]);
+        $result = $this->task->run();
+        $this->assertInstanceOf('\Robo\Result', $result);
+        $this->assertFalse($result->wasSuccessful(), 'The task must be run with errors');
     }
 
     /**
@@ -57,7 +70,10 @@ class CompileLessTaskTest extends \PHPUnit_Framework_TestCase
         $this->task->importDirs([
             'resources' . DIRECTORY_SEPARATOR . 'import',
         ]);
-        $this->task->run();
+
+        $result = $this->task->run();
+        $this->assertInstanceOf('\Robo\Result', $result);
+        $this->assertTrue($result->wasSuccessful(), 'The task must be run successfully');
 
         $this->assertFileEquals(
             // Reference CSS file
