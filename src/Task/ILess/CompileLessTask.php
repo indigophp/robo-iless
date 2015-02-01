@@ -79,6 +79,10 @@ class CompileLessTask implements \Robo\Contract\TaskInterface
         return $this;
     }
 
+    /**
+     * Runs the task
+     * @return \Robo\Result A Robo\Result instance containing info on wether the task was successful
+     */
     public function run()
     {
         $parser = new \ILess_Parser([
@@ -95,7 +99,7 @@ class CompileLessTask implements \Robo\Contract\TaskInterface
                 // to file yet. There should be a stream writer, or similar...
                 file_put_contents($destination, $parser->getCSS());
                 $this->printTaskInfo(sprintf('Compiling <info>%s</info> to <info>%s</info>', $source, $destination));
-            } catch (\ILess_Exception_Parser $e) {
+            } catch (\ILess_Exception $e) {
                 $this->printTaskError(sprintf(
                     'Compiling <info>%s</info> to <info>%s</info> FAILED',
                     $source,
