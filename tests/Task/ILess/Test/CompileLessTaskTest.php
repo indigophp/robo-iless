@@ -35,7 +35,7 @@ class CompileLessTaskTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($this->task, $this->task->paths([]));
         $this->assertSame($this->task, $this->task->addPaths([]));
         $this->assertSame($this->task, $this->task->importDirs([]));
-        $this->assertSame($this->task, $this->task->run());
+        $this->assertInstanceOf('\Robo\Result', $this->task->run());
     }
 
     /**
