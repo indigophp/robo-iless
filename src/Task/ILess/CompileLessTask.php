@@ -99,7 +99,5 @@ class CompileLessTask implements \Robo\Contract\TaskInterface
                 ));
             }
         }
-
-        return $this;
     }
 }
