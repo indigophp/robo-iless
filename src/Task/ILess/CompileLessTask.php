@@ -2,6 +2,8 @@
 
 namespace Robo\Task\ILess;
 
+use Robo\Result;
+
 /**
  * Task to compile LESS files utilizing the ILess library.
  *
@@ -83,6 +85,8 @@ class CompileLessTask implements \Robo\Contract\TaskInterface
             'import_dirs' => $this->importDirs,
         ]);
 
+        $success = true;
+
         foreach ($this->paths as $destination => $source) {
             $this->printTaskInfo(sprintf('Compiling <info>%s</info> to <info>%s</info>', $source, $destination));
             try {
@@ -97,7 +101,12 @@ class CompileLessTask implements \Robo\Contract\TaskInterface
                     $source,
                     $destination
                 ));
+                $success = false;
             }
         }
+
+        return $success ?
+            Result::success($this) :
+            Result::error($this, 'Some, or all of the sources could not be compiled.');
     }
 }
