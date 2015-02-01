@@ -1,5 +1,7 @@
 <?php
 
+namespace Robo\Task\ILess\Test;
+
 use Robo\Task\ILess\CompileLessTask;
 use Robo\Task\ILess\loadTasks;
 
@@ -10,7 +12,7 @@ use Robo\Task\ILess\loadTasks;
  * @author Tamás Barta <barta.tamas.d@gmail.com>
  * @package indigophp/robo-iless
  */
-class CompileLessTaskTest extends PHPUnit_Framework_TestCase
+class CompileLessTaskTest extends \PHPUnit_Framework_TestCase
 {
     use loadTasks;
 
