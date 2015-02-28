@@ -1,6 +1,5 @@
 {
 	"name": "indigophp/robo-iless",
-	"type": "library",
 	"description": "Robo Task to compile LESS projects using the ILess library",
 	"keywords": ["less", "lesscss", "php", "parser", "compiler", "preprocessor", "robo", "task"],
 	"license": "MIT",
@@ -9,7 +8,7 @@
 		{
 			"name": "Barta Tamás",
 			"homepage": "http://bartatamas.hu",
-            "email": "barta.tamas.d@gmail.com"
+			"email": "barta.tamas.d@gmail.com"
 		}
 	],
 	"require": {
@@ -21,6 +20,13 @@
 		"phpunit/phpunit": "~4.4"
 	},
 	"autoload": {
-		"psr-4": { "Robo\\": "src/" }
+		"psr-4": {
+			"Robo\\": "src/"
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "0.1-dev"
+		}
 	}
 }
