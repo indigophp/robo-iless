@@ -7,7 +7,7 @@ namespace Robo\Task\ILess;
  */
 trait loadTasks
 {
-    public function taskCompileLess(array $paths)
+    public function taskCompileLess(array $paths = [])
     {
         return new CompileLessTask($paths);
     }
